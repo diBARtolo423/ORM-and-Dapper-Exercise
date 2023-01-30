@@ -29,7 +29,6 @@ namespace ORM_Dapper
             repo.InsertDepartment(newDepartment);
 
             var departments = repo.GetAllDepartments();
-
             foreach (var dept in departments)
             {
                 Console.WriteLine(dept.Name);
@@ -49,26 +48,22 @@ namespace ORM_Dapper
             productRepo.CreateProduct(newProduct, newPrice, newCategoryID);
 
             var products = productRepo.GetAllProducts();
-
             foreach (var prod in products)
             {
-                Console.WriteLine(prod.Name);
-                Console.WriteLine(prod.ProductID);
+                Console.WriteLine($"{prod.ProductID} {prod.Name} {prod.Price}");                
             }
 
 
             Console.WriteLine("Which product ID do you want to update");
             var updateProductID = int.Parse(Console.ReadLine());
-            Console.WriteLine("Which product name do you want to update");
+            Console.WriteLine("What is the new product name you want");
             var updateProductName = (Console.ReadLine());
             productRepo.UpdateProduct(updateProductID, updateProductName);
 
             products = productRepo.GetAllProducts();
-
             foreach (var prod in products)
             {
-                Console.WriteLine(prod.Name);
-                Console.WriteLine(prod.ProductID);
+                Console.WriteLine($"{prod.ProductID} {prod.Name} {prod.Price}");
             }
 
             Console.WriteLine("Which product do you want to delete");
@@ -76,11 +71,9 @@ namespace ORM_Dapper
             productRepo.DeleteProduct(deleteProductID);
 
             products = productRepo.GetAllProducts();
-
             foreach (var prod in products)
             {
-                Console.WriteLine(prod.Name);
-                Console.WriteLine(prod.ProductID);
+                Console.WriteLine($"{prod.ProductID} {prod.Name} {prod.Price}");
             }
 
 
